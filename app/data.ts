@@ -106,7 +106,7 @@ export const BLOG_POSTS: BlogPost[] = [
 export const SOCIAL_LINKS: SocialLink[] = [
   {
     label: 'Github',
-    link: 'https://github.com/ibelick',
+    link: 'https://github.com/DNApolymerase3',
   },
   {
     label: 'Twitter',
@@ -122,4 +122,4 @@ export const SOCIAL_LINKS: SocialLink[] = [
   },
 ]
 
-export const EMAIL = 'your@email.com'
+export const EMAIL = 'trperry@stanfordchildrens.org'

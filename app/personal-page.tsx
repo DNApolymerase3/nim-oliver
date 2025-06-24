@@ -129,7 +129,7 @@ export default function PersonalPage({ notes }: { notes: Note[] }) {
   return (
     <AnimatedBackground>
       <motion.main
-        className="space-y-24"
+        className="space-y-16"
         variants={VARIANTS_CONTAINER}
         initial="hidden"
         animate="visible"
@@ -238,6 +238,7 @@ export default function PersonalPage({ notes }: { notes: Note[] }) {
         <motion.section
           variants={VARIANTS_SECTION}
           transition={TRANSITION_SECTION}
+          className="mt-12"
         >
           <h3 className="mb-5 text-lg font-medium">Contact Me</h3>
           <div className="flex flex-wrap items-center gap-2.5">
