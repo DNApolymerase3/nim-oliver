@@ -6,6 +6,7 @@ export type BlogPost = {
   description: string
   link: string
   uid: string
+  date: string
 }
 
 export function getBlogPosts(): BlogPost[] {
@@ -20,28 +21,24 @@ export function getBlogPosts(): BlogPost[] {
     const posts = postFolders
       .map((folderName: string) => {
         const mdxPath = path.join(postsDirectory, folderName, 'page.mdx')
-        if (!fs.existsSync(mdxPath)) {
-          return null
-        }
+        if (!fs.existsSync(mdxPath)) return null
 
+        const stats = fs.statSync(mdxPath)
         const fileContents = fs.readFileSync(mdxPath, 'utf8')
 
         const titleMatch = fileContents.match(/title: '(.*?)'/)
         const descriptionMatch = fileContents.match(/description: '(.*?)'/)
 
-        const title = titleMatch ? titleMatch[1] : 'Untitled Post'
-        const description = descriptionMatch
-          ? descriptionMatch[1]
-          : 'No description available.'
-
         return {
-          title,
-          description,
+          title: titleMatch ? titleMatch[1] : 'Untitled Post',
+          description: descriptionMatch?.[1] ?? 'No description available.',
           link: `/blog/${folderName}`,
           uid: folderName,
+          date: stats.birthtime.toISOString(),
         }
       })
       .filter((post: BlogPost | null): post is BlogPost => post !== null)
+      .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
 
     return posts
   } catch (error) {
