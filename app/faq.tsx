@@ -12,7 +12,7 @@ export function Faq() {
   return (
     <div className="py-8">
       <h2 className="text-lg font-semibold text-zinc-950 dark:text-zinc-50">
-        Frequently asked questions
+        more info!
       </h2>
       <Accordion
         className="flex w-full flex-col"
@@ -33,16 +33,14 @@ export function Faq() {
             <div className="flex items-center">
               <ChevronRight className="h-4 w-4 text-zinc-950 transition-transform duration-200 group-data-expanded:rotate-90 dark:text-zinc-50" />
               <div className="ml-2 text-zinc-950 dark:text-zinc-50">
-                How do I start with Motion-Primitives?
+                What's Tristan's current university standing? What classes is he taking
               </div>
             </div>
           </AccordionTrigger>
           <AccordionContent className="origin-left">
             <p className="pl-6 pr-2 text-zinc-500 dark:text-zinc-400">
-              Kick off your experience by setting up Motion-Primitives. This
-              section covers the basics of installation and how to add animations
-              to your projects. You’ll get familiar with the initial setup and the
-              core features quickly.
+              I'm currently a sophomore(?) at Santa Clara University, having just transfered from CWRU in Cleveland, Ohio. At the moment I'm taking MATH8 (Intro Stats) and PHIL 25 (Ethics). 
+I also attend peds cardiology fellow lectures, but that's occuring in an entirely unofficial capacity out of a ravenous curiosity for the subject material
             </p>
           </AccordionContent>
         </AccordionItem>
@@ -51,15 +49,16 @@ export function Faq() {
             <div className="flex items-center">
               <ChevronRight className="h-4 w-4 text-zinc-950 transition-transform duration-200 group-data-expanded:rotate-90 dark:text-zinc-50" />
               <div className="ml-2 text-zinc-950 dark:text-zinc-50">
-                What are the key animation properties?
+                Summary of tristan's research and work experience
               </div>
             </div>
           </AccordionTrigger>
           <AccordionContent className="origin-left">
             <p className="pl-6 pr-2 text-zinc-500 dark:text-zinc-400">
-              Discover a variety of properties to customize your animations. Learn
-              to adjust timing, easing, and delays for smoother effects. This
-              guide will help you tailor these settings to your app’s needs.
+              1000hrs - Dr. Wu lab, Heart center - clinical and basic sciences research<br />
+              Publications : BioAVR durability investigation<br />
+              500hrs - CNA - Cardiovascular Intensive care unit<br />
+              500hrs - volunteer translator - Spanish, Chinese
             </p>
           </AccordionContent>
         </AccordionItem>
@@ -68,16 +67,13 @@ export function Faq() {
             <div className="flex items-center">
               <ChevronRight className="h-4 w-4 text-zinc-950 transition-transform duration-200 group-data-expanded:rotate-90 dark:text-zinc-50" />
               <div className="ml-2 text-zinc-950 dark:text-zinc-50">
-                How do I use advanced features?
+                what does tristan do for fun?
               </div>
             </div>
           </AccordionTrigger>
           <AccordionContent className="origin-left">
             <p className="pl-6 pr-2 text-zinc-500 dark:text-zinc-400">
-              Advance your skills by using more complex functions of
-              Motion-Primitives. Explore how to link animations together, create
-              intricate sequences, and interact with motion sensors for dynamic
-              effects.
+              A few too many things to manage unfortunately. The most longstanding of my projects have been rock climbing, photography, and of course, pediatric cardiology. You typically can find what is currently monopolizing my time in the notes section
             </p>
           </AccordionContent>
         </AccordionItem>
@@ -86,17 +82,15 @@ export function Faq() {
             <div className="flex items-center">
               <ChevronRight className="h-4 w-4 text-zinc-950 transition-transform duration-200 group-data-expanded:rotate-90 dark:text-zinc-50" />
               <div className="ml-2 text-zinc-950 dark:text-zinc-50">
-                How do I engage with the community?
+                fun bird pictures!
               </div>
             </div>
           </AccordionTrigger>
           <AccordionContent className="origin-left">
-            <p className="pl-6 pr-2 text-zinc-500 dark:text-zinc-400">
-              Connect with the Motion-Primitives community for support and
-              collaboration. Learn how to contribute, share knowledge, and access
-              helpful resources. Stay updated on new updates and collective
-              insights.
-            </p>
+            <div className="pl-6 pr-2 text-zinc-500 dark:text-zinc-400">
+              <a href="https://adobe.ly/4lke6cq" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">https://adobe.ly/4lke6cq</a>
+              <p className="mt-2">photo slider work in progress</p>
+            </div>
           </AccordionContent>
         </AccordionItem>
       </Accordion>
