@@ -19,7 +19,7 @@ import {
   EMAIL,
   SOCIAL_LINKS,
 } from './data'
-import { BlogPost } from '@/lib/posts'
+import { Note } from '@/lib/notes'
 
 const VARIANTS_CONTAINER = {
   hidden: { opacity: 0 },
@@ -37,7 +37,8 @@ const VARIANTS_SECTION = {
 }
 
 const TRANSITION_SECTION = {
-  duration: 0.3,
+  duration: 0.8,
+  ease: [0.4, 0, 0.2, 1],
 }
 
 type ProjectVideoProps = {
@@ -124,7 +125,7 @@ function MagneticSocialLink({
   )
 }
 
-export default function PersonalPage({ blogPosts }: { blogPosts: BlogPost[] }) {
+export default function PersonalPage({ notes }: { notes: Note[] }) {
   return (
     <AnimatedBackground>
       <motion.main
@@ -179,27 +180,57 @@ export default function PersonalPage({ blogPosts }: { blogPosts: BlogPost[] }) {
         <motion.section
           variants={VARIANTS_SECTION}
           transition={TRANSITION_SECTION}
+          className="mt-12"
         >
           <div className="flex items-center justify-between mb-5">
-            <h3 className="text-lg font-medium">From the blog</h3>
-            <Link href="/blog" className="text-sm font-medium text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100 transition-colors">
-              View all posts
+            <h3 className="text-lg font-medium">From the notes</h3>
+            <Link href="/notes" className="text-sm font-medium text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100 transition-colors">
+              View all notes
             </Link>
           </div>
           <div className="flex flex-col space-y-2">
-            {blogPosts.slice(0, 3).map((post) => (
-              <Link
-                href={post.link}
-                key={post.uid}
-                className="relative overflow-hidden rounded-2xl bg-zinc-300/30 p-[1px] dark:bg-zinc-600/30"
+            {notes.slice(0, 3).map((note) => (
+              <div
+                key={note.uid}
+                className="group relative transform overflow-hidden rounded-2xl bg-zinc-300/30 p-[1px] transition-transform duration-300 ease-in-out hover:scale-105 dark:bg-zinc-600/30"
               >
-                <div className="relative h-full w-full rounded-[15px] bg-white p-4 dark:bg-zinc-950">
-                  <h4 className="font-normal dark:text-zinc-100">{post.title}</h4>
-                  <p className="text-zinc-500 dark:text-zinc-400">
-                    {post.description}
+                <div className="relative flex h-full flex-col justify-between rounded-[15px] bg-white p-4 dark:bg-zinc-950">
+                  <div>
+                    <div className="flex items-start justify-between">
+                      <h4 className="font-normal dark:text-zinc-100">
+                        {note.title}
+                      </h4>
+                      {note.tags && (
+                        <div className="relative z-10 flex flex-wrap gap-2 pl-4">
+                          {note.tags.map((tag) => (
+                            <span
+                              key={tag}
+                              className="rounded-full bg-zinc-100 px-2 py-0.5 text-xs font-medium text-zinc-600 dark:bg-zinc-800 dark:text-zinc-300"
+                            >
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                    <p className="mt-2 text-sm text-zinc-500 dark:text-zinc-400">
+                      {note.description}
+                    </p>
+                  </div>
+                  <p className="mt-4 text-xs text-zinc-400 dark:text-zinc-500">
+                    {new Date(note.date).toLocaleDateString('en-US', {
+                      year: 'numeric',
+                      month: 'long',
+                      day: 'numeric',
+                    })}
                   </p>
                 </div>
-              </Link>
+                <Link
+                  href={note.link}
+                  className="absolute inset-0"
+                  aria-label={`Read more about ${note.title}`}
+                />
+              </div>
             ))}
           </div>
         </motion.section>

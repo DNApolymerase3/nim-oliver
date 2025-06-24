@@ -1,8 +1,8 @@
-import { getBlogPosts } from '@/lib/posts';
+import { getNotes } from '@/lib/notes';
 import PersonalPage from '@/app/personal-page';
 
 export default function Home() {
-  const blogPosts = getBlogPosts();
+  const notes = getNotes();
 
-  return <PersonalPage blogPosts={blogPosts} />;
+  return <PersonalPage notes={notes} />;
 }

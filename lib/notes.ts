@@ -1,16 +1,17 @@
 import fs, { Dirent } from 'fs'
 import path from 'path'
 
-export type BlogPost = {
+export type Note = {
   title: string
   description: string
   link: string
   uid: string
   date: string
+  tags?: string[]
 }
 
-export function getBlogPosts(): BlogPost[] {
-  const postsDirectory = path.join(process.cwd(), 'app/blog')
+export function getNotes(): Note[] {
+  const postsDirectory = path.join(process.cwd(), 'app/notes')
 
   try {
     const postFolders = fs
@@ -18,8 +19,8 @@ export function getBlogPosts(): BlogPost[] {
       .filter((dirent: Dirent) => dirent.isDirectory())
       .map((dirent: Dirent) => dirent.name)
 
-    const posts = postFolders
-      .map((folderName: string) => {
+    const notes = postFolders
+      .map((folderName: string): Note | null => {
         const mdxPath = path.join(postsDirectory, folderName, 'page.mdx')
         if (!fs.existsSync(mdxPath)) return null
 
@@ -28,19 +29,28 @@ export function getBlogPosts(): BlogPost[] {
 
         const titleMatch = fileContents.match(/title: '(.*?)'/)
         const descriptionMatch = fileContents.match(/description: '(.*?)'/)
+        const tagsMatch = fileContents.match(/tags: \[(.*?)\]/)
 
-        return {
+        const note: Note = {
           title: titleMatch ? titleMatch[1] : 'Untitled Post',
           description: descriptionMatch?.[1] ?? 'No description available.',
-          link: `/blog/${folderName}`,
+          link: `/notes/${folderName}`,
           uid: folderName,
           date: stats.birthtime.toISOString(),
         }
+
+        if (tagsMatch && tagsMatch[1]) {
+          note.tags = tagsMatch[1]
+            .split(',')
+            .map((tag) => tag.trim().replace(/['"]/g, ''))
+        }
+
+        return note
       })
-      .filter((post: BlogPost | null): post is BlogPost => post !== null)
+      .filter((note): note is Note => note !== null)
       .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
 
-    return posts
+    return notes
   } catch (error) {
     console.error('Error reading blog posts:', error)
     return []
