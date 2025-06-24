@@ -77,7 +77,7 @@ export function Footer() {
         <div className="flex items-center justify-between">
           <a href="https://github.com/ibelick/nim" target="_blank">
             <TextLoop className="text-xs text-zinc-500">
-              <span>© 2024 Tristan Perry.</span>
+              <span>modified from nim with love</span>
               <span>Built with Motion-Primitives.</span>
             </TextLoop>
           </a>
@@ -94,7 +94,7 @@ export function Footer() {
       <div className="container mx-auto flex max-w-3xl items-center justify-between px-4">
         <a href="https://github.com/ibelick/nim" target="_blank">
           <TextLoop className="text-xs text-zinc-500">
-            <span>© 2024 Tristan Perry.</span>
+            <span>modified from nim with love</span>
             <span>Built with Motion-Primitives.</span>
           </TextLoop>
         </a>
