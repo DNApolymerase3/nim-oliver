@@ -90,7 +90,7 @@ export function Footer() {
   }
 
   return (
-    <footer className="mt-24 border-t border-zinc-100 py-4 dark:border-zinc-800">
+    <footer className="mt-2 border-t border-zinc-100 dark:border-zinc-800">
       <div className="container mx-auto flex max-w-3xl items-center justify-between px-4">
         <a href="https://github.com/ibelick/nim" target="_blank">
           <TextLoop className="text-xs text-zinc-500">

@@ -20,6 +20,7 @@ import {
   SOCIAL_LINKS,
 } from './data'
 import { Note } from '@/lib/notes'
+import { Faq } from '@/app/faq'
 
 const VARIANTS_CONTAINER = {
   hidden: { opacity: 0 },
@@ -238,7 +239,15 @@ export default function PersonalPage({ notes }: { notes: Note[] }) {
         <motion.section
           variants={VARIANTS_SECTION}
           transition={TRANSITION_SECTION}
-          className="mt-12"
+          className="mt-4"
+        >
+          <Faq />
+        </motion.section>
+
+        <motion.section
+          variants={VARIANTS_SECTION}
+          transition={TRANSITION_SECTION}
+          className="mt-4"
         >
           <h3 className="mb-5 text-lg font-medium">Contact Me</h3>
           <div className="flex flex-wrap items-center gap-2.5">
