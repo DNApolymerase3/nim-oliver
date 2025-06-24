@@ -23,6 +23,7 @@ export function Header() {
           <span>Maker</span>
         </TextLoop>
       </div>
+      <img src="/ezgif-48c7fcf1df66ae-unscreen.gif" alt="logo" className="h-12 w-12" />
     </header>
   )
 }

@@ -92,7 +92,7 @@ export function NotesList({ notes }: { notes: Note[] }) {
   }, [notes, searchTitle, searchTags])
 
   return (
-    <main className="container mx-auto min-w-[48rem] max-w-3xl px-4 py-24">
+    <main className="container mx-auto min-w-[48rem] max-w-3xl px-4 pt-0">
       <motion.h1
         variants={VARIANTS_ITEM}
         className="mb-8 text-3xl font-bold text-zinc-900 dark:text-zinc-100"
