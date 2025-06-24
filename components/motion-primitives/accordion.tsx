@@ -6,7 +6,7 @@ import {
   Variants,
   Variant,
   MotionConfig,
-} from 'motion/react';
+} from 'framer-motion';
 import { cn } from '@/lib/utils';
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 
@@ -115,7 +115,7 @@ function AccordionItem({ value, children, className }: AccordionItemProps) {
       {React.Children.map(children, (child) => {
         if (React.isValidElement(child)) {
           return React.cloneElement(child, {
-            ...child.props,
+            ...(child.props as any),
             value,
             expanded: isExpanded,
           });
