@@ -5,6 +5,7 @@ import { Header } from './header'
 import { Footer } from './footer'
 import { ThemeProvider } from 'next-themes'
 import { AnimatedTabs } from '@/components/ui/animated-tabs'
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -59,6 +60,7 @@ export default function RootLayout({
             </div>
           </div>
         </ThemeProvider>
+        <SpeedInsights />
       </body>
     </html>
   )
